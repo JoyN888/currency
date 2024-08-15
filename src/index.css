@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: url("bgi.jpg") no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+#root {
+    width: 100%;
+}
+
+.currency {
+    margin: 0 auto;
+    padding: 40px 30px 50px;
+    border-radius: 8px;
+    max-width: 410px;
+    backdrop-filter: blur(30px);
+    background: rgba(2, 7, 40, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.currency:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+.currency .converter-title {
+    color: wheat;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    cursor:alias;
+}
+
+.currency .converter-title::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: wheat;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    transition: width 0.3s ease-in-out;
+}
+
+.currency .converter-title:hover::after {
+    width: 70%;
+}
+
+
+.currency .converter-form {
+    margin-top: 45px;
+}
+
+.converter-form .form-group {
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+
+.converter-form .form-group .form-label {
+    color: #fff;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 9px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.converter-form .form-group .form-input {
+    outline: none;
+    font-size: 1.1rem;
+    padding: 0 10px;
+    color: #fff;
+    font-weight: 500;
+    min-height: 48px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(57, 43, 94, 0.418);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.converter-form .form-group .form-input:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.converter-form .form-currency-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-currency-group .currency-select {
+    display: flex;
+    padding: 0 10px;
+    min-height: 46px;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(57, 43, 94, 0.418);
+    transition: background 0.3s ease;
+}
+
+.form-currency-group .currency-select:hover {
+    background: rgba(57, 43, 94, 0.618);
+}
+
+.form-currency-group .currency-select img {
+    width: 25px;
+}
+
+.form-currency-group .currency-select .currency-dropdown {
+    outline: none;
+    border: none;
+    background: none;
+    color: gray;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0 10px 0 5px;
+}
+
+.form-currency-group .swap-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(57, 43, 94, 0.418);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.form-currency-group .swap-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(180deg);
+}
+
+.converter-form .submit-button {
+    width: 100%;
+    min-height: 52px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.converter-form .submit-button.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    cursor: progress;
+}
+
+.converter-form .submit-button:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px);
+}
+
+.converter-form .exchange-rate-result {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 30px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.converter-form .exchange-rate-result:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
